@@ -1,1 +1,471 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC COMICS</title>
+    <link rel= "icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DC_Comics_logo.svg/2048px-DC_Comics_logo.svg.png" type="image/png">
+    <style>
+        /* Resetando margens e paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corpo da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #141414;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Barra de navegação */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #e50914;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080?text=Banner+de+Filme') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 100px; /* Distância da navbar */
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://images7.alphacoders.com/114/1144579.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* ESCURECE a imagem */
+            z-index: 1;
+        }
+
+        .hero > div {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 span {
+            display: inline-block;
+        }
+
+        .hero .welcome-text {
+            color: #fff; /* Branco */
+        }
+
+        .hero .dc-comics {
+            color: #e50914; /* Vermelho */
+        }
+
+        .hero p {
+            font-size: 24px;
+        }
+
+        .btn-primary {
+            padding: 12px 30px;
+            font-size: 18px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #f40612;
+        }
+
+        /* Seção de conteúdo */
+        .content {
+            padding: 50px 20px;
+            background-color: #141414;
+        }
+
+        .content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .movie-list {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .movie {
+            flex-shrink: 0;
+            width: 200px;
+            position: relative;
+        }
+
+        .movie img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .movie img:hover {
+            transform: scale(1.05);
+        }
+
+        .movie h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .movie p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .movie-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .movie {
+                margin-bottom: 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #141414;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Seção Sobre */
+        #sobre {
+            padding: 60px 30px;
+            background-color: #1e1e1e;
+        }
+
+        #sobre h2 {
+            font-size: 48px;
+            text-align: center;
+            color: #e50914;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .personagem-box {
+            background-color: #2a2a2a;
+            border-left: 8px solid #e50914;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.2);
+            text-align: justify;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .personagem-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.4);
+        }
+
+        .personagem-box h3 {
+            font-size: 36px;
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+
+        .personagem-box p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            #sobre h2 {
+                font-size: 36px;
+            }
+
+            .personagem-box h3 {
+                font-size: 28px;
+            }
+
+            .personagem-box p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="logo">DC COMICS</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#Trailer">Trailer</a></li>
+            <li><a href="#Personagens">Personagens</a></li>
+            <li><a href="#curiosidades">Curiosidades</a></li>
+        </ul>        
+    </nav>
+
+    <!-- Seção Hero (Banner Principal) com imagem de fundo -->
+<section class="hero" id="home" style="background: url('https://images7.alphacoders.com/114/1144579.jpg') no-repeat center center/cover;">
+    <div>
+        <h1><span class="welcome-text">Bem-vindo ao</span> <span class="dc-comics">DC COMICS</span></h1>
+    </div>
+</section>
+
+    <!-- Seção de Vídeos -->
+
+    <section class="content" id="Trailer">
+        <h2>Trailer</h2>
+        <div class="movie-list">
+            <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/49RZx5tUKM4" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/IgVyroQjZbE" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/tqfOtQ5auBA" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/rsQEor4y2hg" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/Zoh0R6geWs0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/VSAxskGAtxo" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/XQS7JkQmlx8" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/CP7tgh0bJSI" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="movie">
+            <iframe width="200" height="300" src="https://www.youtube.com/embed/621pfj0EfIc" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+    <!-- Seção de Personagens -->
+    <section class="content" id="Personagens">
+        <h2>Personagens</h2>    
+        <div class="movie-list">
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/cc/96/f7/cc96f7456e37f14627831e49ce809465.jpg" alt="Supergirl">
+                <h3>Supergirl</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/cf/3e/c2/cf3ec2ddda1a6054abd53b8fd378abce.jpg" alt="The Flash">
+                <h3>The Flash</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/68/3f/98/683f98d64dfd7c1b025c677c47df96cd.jpg" alt="Mulher Maravilha">
+                <h3>Mulher Maravilha</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/1b/80/33/1b80337576618df2834d260489c1b7ee.jpg" alt="Batman">
+                <h3>Batman</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/c0/6c/c6/c06cc6baa091178b96260c84334d3745.jpg" alt="Lanterna Verde">
+                <h3>Lanterna Verde</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/f1/2c/bb/f12cbb132fb8a77baa93346ca0a7a455.jpg" alt="Aquaman">
+                <h3>Aquaman</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/b8/83/e0/b883e00d0619d35977624610c5d49e6c.jpg" alt="Arqueiro Verde">
+                <h3>Arqueiro Verde</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/8f/62/71/8f6271dbd9349bc501eb865f9e4ea5f1.jpg" alt="Superman">
+                <h3>Superman</h3>
+            </div>
+            <div class="movie">
+                <img src="https://i.pinimg.com/736x/76/2b/9f/762b9fe9e1515eb96f85f59593b6766f.jpg" alt="Coringa">
+                <h3>Coringa</h3>
+            </div>
+        </div> 
+    </section>
+
+    <!-- Seção Sobre -->
+    <section class="content" id="curiosidades">
+        <h2>Sobre os Personagens</h2>
+        <div class="personagem-box">
+            <h3>🌟 Supergirl</h3>
+            <p>
+                <strong>Kara Zor-El</strong>, é uma super-heroína kryptoniana e prima do Superman. Ela nasceu no planeta Krypton e foi enviada à Terra para proteger seu primo Kal-El, mas sua nave foi desviada e chegou ao planeta anos depois. Assim como Superman, ela absorve a energia do Sol amarelo da Terra, o que lhe concede poderes incríveis, como superforça, voo, visão de calor, visão de raio-X, sopro congelante, invulnerabilidade, supervelocidade e superaudição.
+            </p>
+            <p>
+                Mesmo tendo chegado mais tarde, Supergirl é uma das heroínas mais poderosas do universo, combinando força com coragem e um forte senso de justiça.
+            </p>
+        </div>
+
+        <div class="personagem-box">
+            <h3>⚡ The Flash</h3>
+            <p>
+                <strong>Barry Allen,</strong> é um super-herói da DC Comics conhecido como o homem mais rápido do mundo. Cientista forense da polícia, Barry ganhou seus poderes após um acidente no laboratório envolvendo produtos químicos e um raio. A partir disso, ele passou a acessar a Força de Aceleração, uma energia que lhe dá supervelocidade.
+            </p>
+            <p>
+                Com ela, Barry pode correr mais rápido que a luz, viajar no tempo, atravessar objetos vibrando suas moléculas, pensar e reagir em milésimos de segundo. Além disso, é um herói inteligente, determinado e sempre busca usar sua velocidade para salvar vidas e proteger Central City.
+            </p>
+        </div>
+
+        <div class="personagem-box">
+            <h3>🛡️ Mulher Maravilha</h3>
+            <p>
+                <strong>Diana Prince,</strong> é uma das maiores heroínas do universo DC. Ela é uma princesa das Amazonas, uma raça de guerreiras imortais que vivem na ilha escondida de Themyscira. Filha da rainha Hipólita, Diana foi criada para ser uma guerreira poderosa e justa. Dotada de força sobre-humana, velocidade, agilidade, resistência e habilidades de combate incríveis, ela também possui armas mágicas, como o Laço da Verdade, os braceletes indestrutíveis e o escudo amazônico.
+            </p>
+            <p>
+                Em muitas versões, ela é filha de Zeus, o que reforça sua origem divina. Mulher-Maravilha representa coragem, sabedoria e compaixão, lutando por paz, justiça e igualdade no mundo dos humanos.
+            </p>
+        </div>
+        <div class="personagem-box">
+            <h3>🦇 Batman</h3>
+            <p>
+                <strong>Bruce Wayne,</strong> é um dos heróis mais icônicos da DC Comics. Após presenciar o assassinato de seus pais quando criança, Bruce jurou combater o crime em Gotham City. Mesmo sem superpoderes, ele se tornou um dos maiores heróis do mundo graças à sua inteligência, preparo físico e determinação. Multimilionário e dono da empresa Wayne Enterprises, ele usa sua fortuna para desenvolver equipamentos, veículos e armamentos avançados.
+            </p>
+            <p>
+                Mestre em artes marciais, estratégia e investigação, Batman é conhecido como o Maior Detetive do Mundo. Com sua capa, o cinto de utilidades e o símbolo do morcego, ele inspira medo nos criminosos e protege os inocentes com coragem e justiça.
+            </p>
+        </div>
+        <div class="personagem-box">
+            <h3>💍 Lanterna Verde </h3>
+            <p>
+                <strong>Hal Jordan,</strong> é um super-herói da DC Comics que faz parte da Tropa dos Lanternas Verdes — uma organização intergaláctica responsável por proteger o universo. Hal era um piloto de testes corajoso quando foi escolhido pelo anel do poder, uma das armas mais poderosas do universo, que escolhe alguém com grande força de vontade e coragem.
+            </p>
+            <p>
+                Com esse anel, ele pode criar qualquer coisa que imaginar, usando pura energia verde. Seu dever é proteger o setor 2814, que inclui a Terra, enfrentando ameaças cósmicas com criatividade, disciplina e muita determinação.
+            </p>
+        </div>
+        <div class="personagem-box">
+            <h3>🌊 Aquaman</h3>
+            <p>
+                <strong> Arthur Curry,</strong> é o rei de Atlântida e um dos membros mais importantes da Liga da Justiça. Filho de um humano com a rainha atlante Atlanna, Arthur tem origem mista e representa a conexão entre a superfície e os mares. Como governante dos oceanos, ele possui poderes ligados ao mar e é capaz de comandar criaturas marinhas com a mente. 
+            </p>
+            <p>
+                Além disso, Aquaman é extremamente forte, resistente e rápido, tanto em terra quanto debaixo d'água. Empunha o poderoso tridente de Poseidon, que pode controlar as águas e serve como arma em batalha.
+            </p>
+        </div>
+        <div class="personagem-box">
+            <h3>🏹 Arqueiro Verde</h3>
+            <p>
+                <strong>Oliver Queen,</strong> é um super-herói da DC Comics conhecido por sua habilidade excepcional com o arco e flecha. Bilionário e antigo playboy, Oliver sofreu um naufrágio e ficou preso por anos em uma ilha, onde aprendeu a sobreviver e desenvolveu suas incríveis habilidades de combate e pontaria. Ao voltar para a civilização, decidiu usar suas habilidades para combater o crime em sua cidade, Star City, assumindo a identidade de Arqueiro Verde.
+            </p>
+            <p>
+                Com seu arco personalizado e flechas especiais — explosivas, tecnológicas, de choque e até com cordas — ele se tornou um herói inteligente, estratégico e altamente treinado, mesmo sem ter superpoderes.
+            </p>
+        </div>
+        <div class="personagem-box">
+            <h3>⭐ Superman</h3>
+            <p>
+                <strong>Herny Cavil,</strong> é um dos super-heróis mais poderosos da DC Comics. Nascido no planeta Krypton como Kal-El, ele foi enviado à Terra antes da destruição de seu planeta natal. Quando chegou aqui, foi criado como Clark Kent por uma família humana e, ao crescer, descobriu que possuía habilidades extraordinárias devido à diferença entre a gravidade e a atmosfera da Terra em comparação a Krypton. Entre suas habilidades, ele tem uma força descomunal, capacidade de voar, visão de calor e raio-X, e uma resistência incrível a danos. Ele também é extremamente rápido e possui um sopro gelado capaz de congelar objetos. 
+            </p>
+            <p>
+                Sua maior fraqueza é a kryptonita, um mineral que vem de seu planeta natal, que pode enfraquecê-lo e até matá-lo. Além disso, Superman sempre lutou para proteger a humanidade, buscando equilíbrio entre sua natureza kryptoniana e sua vida como um ser humano.
+            </p>
+        </div>
+        <div class="personagem-box">
+            <h3>🤡 Coringa</h3>
+            <p>
+                O Coringa é o principal vilão de Batman, conhecido por sua mente insana e imprevisível. Ele não possui superpoderes, mas é um mestre da manipulação, criando caos e sofrimento em sua busca por desestabilizar a sociedade. Seu principal objetivo não é dinheiro ou poder, mas espalhar o caos e provar que todos têm um lado sombrio. Sua relação com Batman é marcada por uma dinâmica de opostos, onde o Coringa vê o Cavaleiro das Trevas como uma antítese e uma forma de entretenimento, desafiando-o constantemente.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
